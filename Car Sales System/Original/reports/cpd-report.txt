@@ -1,0 +1,368 @@
+Found a 39 line (107 tokens) duplication in the following files: 
+Starting at line 102 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 94 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+			nextButtonClicked();
+	}
+
+	/**
+	 * get next index if it exists, and display it visually using CarDetailsComponents
+	 */
+	private void nextButtonClicked()
+	{
+		if (currentIndex < carList.length - 1)
+		{
+			currentIndex++;
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+
+	/**
+	 * get previous index if it exists, and display it visually using CarDetailsComponents
+	 */
+	private void previousButtonClicked()
+	{
+		if (currentIndex > 0)
+		{
+			currentIndex--;
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+
+	/**
+	 * clear search results, begin next search from scratch
+	 */
+	private void resetButtonClicked()
+	{
+		currentIndex = 0;
+		carList = null;
+		carComponents.setVisible(false);
+=====================================================================
+Found a 26 line (92 tokens) duplication in the following files: 
+Starting at line 156 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 146 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+			carList = carSystem.search((int)priceRange[0], (int)priceRange[1], (double)distanceRange[0], (double)distanceRange[1]);
+		}
+
+		if (carList.length > 0)
+		{
+			currentIndex = 0;
+			carComponents.setVisible(true);
+			carComponents.displayDetails(carList[0]);
+
+			if (carList.length == 1)
+			{
+				nextButton.setEnabled(false);
+				previousButton.setEnabled(false);
+			}
+			else
+			{
+				nextButton.setEnabled(true);
+				previousButton.setEnabled(true);
+			}
+
+			carSystem.repaint();
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "Sorry, no search results were returned", "Search failed", JOptionPane.WARNING_MESSAGE);
+	}
+}
+=====================================================================
+Found a 29 line (87 tokens) duplication in the following files: 
+Starting at line 121 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 103 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 95 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+	}
+
+	/**
+	 * display next item in index, otherwise display no next item message dialog
+	 */
+	private void nextButtonClicked()
+	{
+		if (currentIndex < carList.length - 1)
+		{
+			currentIndex++;
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+
+	/**
+	 * display previous item in index, otherwise display no next item message dialog
+	 */
+	private void previousButtonClicked()
+	{
+		if (currentIndex > 0)
+		{
+			currentIndex--;
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+=====================================================================
+Found a 20 line (75 tokens) duplication in the following files: 
+Starting at line 78 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 70 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+		topPanel.add(priceDistancePanel);
+		topPanel.add(searchButtonsPanel);
+		topPanel.add(Box.createVerticalStrut(15));
+		carComponents.add(navigateButtonsPanel, "Center");
+		carComponents.setVisible(false);
+
+		add(topPanel, "North");
+		add(carComponents, "Center");
+	}
+
+	/**
+	 * check for button clicks
+	 *
+	 * @param ev ActionEvent object
+	 */
+	public void actionPerformed(ActionEvent ev)
+	{
+		if (ev.getSource() == searchButton)
+			searchButtonClicked();
+		else if (ev.getSource() == resetButton)
+=====================================================================
+Found a 30 line (64 tokens) duplication in the following files: 
+Starting at line 68 of H:\workspace\CarSales\src\WelcomePanel.java
+Starting at line 78 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+
+		add(centerPanel, "Center");
+	}
+
+	/**
+	 * this method is invoked when a car has been added to the system.
+	 *
+	 * @param ev CarUpdateEvent Object
+	 */
+	public void carsUpdated(CarUpdateEvent ev)
+	{
+		if (ev.getSource() == carSystem)
+		{
+			carsUpdated = true;
+		}
+	}
+
+	/**
+	 * when the tab on the main frame gets changed over to this one, we may have to update the
+	 * car list with the latest version
+	 *
+	 * @param ev ChangeEvent object
+	 */
+	public void stateChanged(ChangeEvent ev)
+	{
+		// the source came from a JTabbedPane
+		if (ev.getSource() instanceof JTabbedPane)
+		{
+			JTabbedPane tab = (JTabbedPane)ev.getSource();
+			// the Welcome tab has just been chosen
+			if (tab.getSelectedIndex() == 0)
+=====================================================================
+Found a 12 line (62 tokens) duplication in the following files: 
+Starting at line 185 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 211 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 237 of H:\workspace\CarSales\src\CarsCollection.java
+
+	public double getAverageAge()
+	{
+		Car[] car;
+		double result = 0;
+		int count = 0;
+
+		for (int i = 0; i < manufacturer.length; i++)
+		{
+			car = manufacturer[i].getAllCars();
+			for (int j = 0; j < car.length; j++)
+			{
+				result += car[j].getAge();
+=====================================================================
+Found a 10 line (53 tokens) duplication in the following files: 
+Starting at line 51 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 45 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+	public SearchByOtherPanel(CarSalesSystem carSys)
+	{
+		carSystem = carSys;
+		setLayout(new BorderLayout());
+		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+
+		previousButton.addActionListener(this);
+		nextButton.addActionListener(this);
+		resetButton.addActionListener(this);
+		searchButton.addActionListener(this);
+=====================================================================
+Found a 6 line (41 tokens) duplication in the following files: 
+Starting at line 157 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 191 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 217 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 243 of H:\workspace\CarSales\src\CarsCollection.java
+
+		for (int i = 0; i < manufacturer.length; i++)
+		{
+			car = manufacturer[i].getAllCars();
+			for (int j = 0; j < car.length; j++)
+			{
+				result.addElement(car[j]);
+=====================================================================
+Found a 6 line (39 tokens) duplication in the following files: 
+Starting at line 32 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 29 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+	private JLabel distanceLabel = new JLabel("Distance traveled");
+	private JButton searchButton = new JButton("Search");
+	private JButton resetButton = new JButton("Reset");
+	private JButton previousButton = new JButton("Previous");
+	private JButton nextButton = new JButton("Next");
+	private JComboBox priceCombo = new JComboBox(price);
+=====================================================================
+Found a 7 line (39 tokens) duplication in the following files: 
+Starting at line 72 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 63 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+		navigateButtonsPanel.add(nextButton);
+
+		headingLabel.setAlignmentX(0.5f);
+		topPanel.add(Box.createVerticalStrut(10));
+		topPanel.add(headingLabel);
+		topPanel.add(Box.createVerticalStrut(10));
+		topPanel.add(priceDistancePanel);
+=====================================================================
+Found a 7 line (35 tokens) duplication in the following files: 
+Starting at line 57 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 46 of H:\workspace\CarSales\src\AddCarPanel.java
+
+		buttonPanel.add(nextButton);
+
+		add(Box.createVerticalStrut(10));
+		add(headingLabel);
+		add(Box.createVerticalStrut(15));
+		carComponents.add(buttonPanel, "Center");
+		add(carComponents);
+=====================================================================
+Found a 5 line (30 tokens) duplication in the following files: 
+Starting at line 98 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 88 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+			resetButtonClicked();
+		else if (ev.getSource() == previousButton)
+			previousButtonClicked();
+		else if (ev.getSource() == nextButton)
+			nextButtonClicked();
+=====================================================================
+Found a 16 line (30 tokens) duplication in the following files: 
+Starting at line 258 of H:\workspace\CarSales\src\CarSalesSystem.java
+Starting at line 172 of H:\workspace\CarSales\src\CarDetailsComponents.java
+
+		System.exit(0);	//shut down jvm
+	}
+
+	public void componentHidden(ComponentEvent ev) {}
+
+	public void componentMoved(ComponentEvent ev) {}
+
+	/**
+	 * receives events when JFrame is resized and ensures the application doesn't get resized
+	 * below a minimum size which could cause display problems in the application
+	 *
+	 * @param ev ComponentEvent object
+	 */
+	public void componentResized(ComponentEvent ev)
+	{
+		if (this == ev.getComponent())
+=====================================================================
+Found a 4 line (30 tokens) duplication in the following files: 
+Starting at line 70 of H:\workspace\CarSales\src\CarDetailsComponents.java
+Starting at line 78 of H:\workspace\CarSales\src\CarDetailsComponents.java
+Starting at line 86 of H:\workspace\CarSales\src\CarDetailsComponents.java
+Starting at line 94 of H:\workspace\CarSales\src\CarDetailsComponents.java
+Starting at line 102 of H:\workspace\CarSales\src\CarDetailsComponents.java
+
+        yearLabel.setFont(new Font(currentFont, Font.BOLD, 12));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+=====================================================================
+Found a 5 line (28 tokens) duplication in the following files: 
+Starting at line 75 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 99 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+
+		if (ev.getSource() == previousButton)
+			previousButtonClicked();
+		else if (ev.getSource() == nextButton)
+			nextButtonClicked();
+	}
+=====================================================================
+Found a 10 line (28 tokens) duplication in the following files: 
+Starting at line 131 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 113 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 127 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 105 of H:\workspace\CarSales\src\SearchByAgePanel.java
+Starting at line 119 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+
+	/**
+	 * display previous item in index, otherwise display no next item message dialog
+	 */
+	private void previousButtonClicked()
+=====================================================================
+Found a 4 line (28 tokens) duplication in the following files: 
+Starting at line 391 of H:\workspace\CarSales\src\CarsCollection.java
+Starting at line 401 of H:\workspace\CarSales\src\CarsCollection.java
+
+		{
+			for (int i = 0; i < car.length; i++)
+			{
+				if (car[i].getAge() >= minAge)
+=====================================================================
+Found a 4 line (27 tokens) duplication in the following files: 
+Starting at line 75 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 89 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+		if (ev.getSource() == previousButton)
+			previousButtonClicked();
+		else if (ev.getSource() == nextButton)
+			nextButtonClicked();
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 131 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 145 of H:\workspace\CarSales\src\ShowAllCarsPanel.java
+Starting at line 113 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 105 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+			carComponents.displayDetails(carList[currentIndex]);
+		}
+		else
+			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+	}
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 67 of H:\workspace\CarSales\src\SearchByOtherPanel.java
+Starting at line 57 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+		priceDistancePanel.add(distancePanel);
+
+		searchButtonsPanel.add(searchButton);
+		searchButtonsPanel.add(resetButton);
+		navigateButtonsPanel.add(previousButton);
+		navigateButtonsPanel.add(nextButton);
+=====================================================================
+Found a 1 line (25 tokens) duplication in the following files: 
+Starting at line 62 of H:\workspace\CarSales\src\SearchByAgePanel.java
+Starting at line 63 of H:\workspace\CarSales\src\SearchByAgePanel.java
+
+		agePanel.setBorder(new javax.swing.border.EmptyBorder(new Insets(0, 5, 0, 0)));
